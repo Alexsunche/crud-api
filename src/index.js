@@ -1,5 +1,7 @@
 import { createServer } from 'http';
 import { routes } from './router/router.js';
+import * as dotenv from 'dotenv';
+dotenv.config()
 
 const server = createServer((req, res) => {
   const urlParts = req.url.split('/');
@@ -17,11 +19,12 @@ const server = createServer((req, res) => {
     }
   } catch {
     res.writeHead(500, { 'Content-Type': 'text/plain' });
-    res.end('Something went wrong');
+    res.end(JSON.stringify({ message: 'Internal Server Error' }));
   }
 });
 
-const port = 4000;
+const port = process.env.PORT || 3000;
+console.log( process.env.PORT)
 
 server.listen(port, () => {
   console.log(`Server is running on port ${port}`);

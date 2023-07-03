@@ -1,11 +1,15 @@
-import fs from 'fs'
-const databasePath = new URL('../data/users-data.json', import.meta.url).pathname;
+import fs from 'fs';
+const databasePath = new URL('../data/users-data.json', import.meta.url)
+  .pathname;
 
-export const writeUsersData = () => {
-    try {
-      const data = fs.readFileSync(databasePath, 'utf8');
-      return JSON.parse(data);
-    } catch (error) {
-      console.error('Error reading data from file:', error);
-    }
-  };
+export const writeUsersData = (data) => {
+  try {
+    return fs.writeFileSync(
+      databasePath,
+      JSON.stringify(data, null, 2),
+      'utf8',
+    );
+  } catch (error) {
+    throw new Error('Error writing data to file');
+  }
+};

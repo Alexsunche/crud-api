@@ -13,7 +13,10 @@ export default {
   },
   module: {
     rules: [
-      
+      {
+        loader: 'babel-loader',
+         exclude: /node_modules/,
+      }
     ],
   },
 };

@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start:dev": "nodemon src/index.js",
-    "start:prod": "npm run build && node dist/server.js",
+    "start:prod": "npm run build",
     "build": "cross-env NODE_ENV=production webpack"
   },
   "author": "Alexsunche",
